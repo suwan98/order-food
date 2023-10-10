@@ -15,7 +15,7 @@ function MealItemForm() {
             defaultValue: "1",
           }}
         />
-        <button>+ 추가</button>
+        <button type="button">+ 추가</button>
       </form>
     </>
   );

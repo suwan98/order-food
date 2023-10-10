@@ -1,6 +1,13 @@
 import CartIcon from "../cart/CartIcon";
+import {useContext} from "react";
+import CartContext from "./../../store/CartContext";
 
 function CartButton({...restProps}) {
+  const cartContext = useContext(CartContext);
+  const numberOfCartItems = cartContext.items.reduce((acc, cur) => {
+    return acc + cur.amount;
+  }, 0);
+
   return (
     <>
       <button
@@ -10,7 +17,7 @@ function CartButton({...restProps}) {
           <CartIcon className="mr-[0.5rem]" />
         </span>
         <span>Your Cart</span>
-        <span>3</span>
+        <span>{numberOfCartItems}</span>
       </button>
     </>
   );
