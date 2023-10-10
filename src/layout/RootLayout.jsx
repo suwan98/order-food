@@ -1,9 +1,9 @@
 import Header from "./Header";
 
-function RootLayout({children}) {
+function RootLayout({children, onShowCart}) {
   return (
     <>
-      <Header />
+      <Header onShowCart={onShowCart} />
       {children}
     </>
   );
