@@ -1,26 +1,24 @@
 import {useState} from "react";
-import Cart from "./components/cart/Cart";
-import Meals from "./components/meals/Meals";
-import RootLayout from "./layout/RootLayout";
-import CartContextProvider from "./store/CartContextProvider";
+import Cart from "./components/Cart/Cart/Cart";
+import Foods from "./components/Foods/Foods";
+import Header from "./components/Layout/Header/Header";
 
 function App() {
-  const [isCartVisible, setIsCartVisible] = useState(false);
-  const handleClickShowCart = () => {
-    setIsCartVisible(true);
+  const [isShowModal, setIsShowModal] = useState(false);
+  const handleShowModal = () => {
+    setIsShowModal(true);
   };
-  const handleClickHideCart = () => {
-    setIsCartVisible(false);
+  const handleHideModal = () => {
+    setIsShowModal(false);
   };
 
   return (
     <>
-      <CartContextProvider>
-        <RootLayout onShowCart={handleClickShowCart}>
-          {isCartVisible && <Cart onClose={handleClickHideCart} />}
-          <Meals />
-        </RootLayout>
-      </CartContextProvider>
+      {isShowModal && <Cart onHideModal={handleHideModal} />}
+      <Header onShowModal={handleShowModal} />
+      <main>
+        <Foods />
+      </main>
     </>
   );
 }
