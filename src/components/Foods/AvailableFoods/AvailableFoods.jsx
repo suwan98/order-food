@@ -8,6 +8,7 @@ function AvailableFoods() {
     return (
       <FoodItem
         key={food.id}
+        id={food.id}
         name={food.name}
         description={food.description}
         price={food.price}
